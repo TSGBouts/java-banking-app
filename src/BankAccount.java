@@ -8,24 +8,8 @@ public class BankAccount {
     Scanner scanner = new Scanner(System.in);
 
     BankAccount(String IBAN) {
+        super();
         this.IBAN = IBAN;
     }
 
-    public void deposit() {
-        System.out.println("Please enter deposit");
-        var  amount = scanner.nextDouble();
-        balance += amount;
-    }
-
-    public void withdraw() {
-        System.out.println("Please enter deposit");
-        var  amount = scanner.nextDouble();
-        if (balance < amount) {
-            System.out.println("Insufficient funds");
-        }
-        else balance -= amount;
-    }
-    public double getBalance() {
-        return balance;
-    }
 }

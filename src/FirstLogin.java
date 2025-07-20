@@ -4,28 +4,25 @@ public class FirstLogin {
 
     static Scanner scanner = new Scanner(System.in);
 
-    public static void firstLogin(){
+    public static Customer customer() {
         System.out.println("New customer detected. Create new account? (Y/N)");
-        String answer1 = scanner.nextLine();
-        if (answer1.equals("Y")) createAccount();
-        else if (answer1.equals("N")) return;
-        else System.out.println("Invalid input. Please try again.");
+        Customer customer = null;
 
-        System.out.println("No bank account detected. Create new one? (Y/N)");
-        String answer2 = scanner.nextLine();
-        if (answer2.equals("Y")) {
-            String IBAN = "GR" + "Math.random() * 1000000000";
-            var primaryBankAccount = new BankAccount(IBAN);
+        while (true) {
+            String answer1 = scanner.nextLine();
+            if (answer1.equals("Y")) {
+                customer = createAccount();
+                break;
+            } else System.out.println("Invalid input. Please try again.");
         }
-        else if (answer2.equals("N")) return;
-        else System.out.println("Invalid input. Please try again.");
+        return customer;
     }
 
-    public static void createAccount(){
-        System.out.println("Please enter a username");
-        String username = scanner.nextLine();
-        String accountNumber = "Math.random() * 10";
-        var account = new Account(accountNumber);
-        var customer = new Customer(username, account);
-    }
+        public static Customer createAccount(){
+            System.out.println("Please enter a username");
+            String username = scanner.nextLine();
+            short accountNumber = (short) (Math.random() * 10);
+            var account = new Account(accountNumber);
+            return new Customer(username, account);
+        }
 }

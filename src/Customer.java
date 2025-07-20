@@ -10,4 +10,8 @@ public class Customer {
     public String getUsername() {
         return username;
     }
+
+    public Account getAccount() {
+        return account;
+    }
 }
