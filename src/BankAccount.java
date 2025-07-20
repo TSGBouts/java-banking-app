@@ -1,15 +1,16 @@
 import java.util.Scanner;
 
-public class BankAccount {
+public class BankAccount extends Account {
 
     private String IBAN;
-    private double balance = 0;
 
-    Scanner scanner = new Scanner(System.in);
-
-    BankAccount(String IBAN) {
-        super();
+    BankAccount(short accountNumber, String IBAN) {
+        super(accountNumber);
         this.IBAN = IBAN;
+    }
+
+    public String getIBAN() {
+        return IBAN;
     }
 
 }
