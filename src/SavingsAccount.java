@@ -1,5 +1,9 @@
+import java.util.Scanner;
+
 public class SavingsAccount extends Account{
 
+    final short MONTHS_IN_YEAR = 12;
+    final short PERCENT = 100;
     private String IBAN;
 
     public SavingsAccount(short accountNumber, String IBAN) {
@@ -9,5 +13,16 @@ public class SavingsAccount extends Account{
 
     public String getIBAN() {
         return IBAN;
+    }
+
+    public void compoundSavingsCalculator(Scanner scanner){
+        System.out.println("Enter interest rate: ");
+        float interrestRate = scanner.nextFloat();
+        System.out.println("Enter period in years:");
+        float period = scanner.nextFloat();
+        float intRate = interrestRate / PERCENT;
+        float per = period + MONTHS_IN_YEAR;
+        double savings = getBalance() * Math.pow((1 + intRate / MONTHS_IN_YEAR), MONTHS_IN_YEAR * per);
+        System.out.println(("Your savings in " + period + "years will be " + savings));
     }
 }
