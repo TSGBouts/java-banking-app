@@ -23,33 +23,9 @@ public class BankService {
         }
     }
 
-    public void IBANDeposit(Scanner scanner) {
-        System.out.println("Enter the IBAN of wanted account");
-        String iban = scanner.next();
-
-        Map<String, String> ibanMap = customer.getAccount().getIbanMap();
-
-        if (ibanMap.containsValue(iban)) {
-            String type = ibanMap.entrySet().stream()
-                    .filter(e -> e.getValue().equals(iban))
-                    .map(Map.Entry::getKey)
-                    .findFirst()
-                    .orElse("Unknown");
-            switch (type) {
-                case "BankAccount":
-                    customer.getAccount().getBankAccount().deposit();
-                    System.out.println("Your new balance is " + customer.getAccount().getBankAccount().getBalance() + "$");
-                    break;
-                case "SavingsAccount":
-                    customer.getAccount().getSavingsAccount().deposit();
-                    System.out.println("Your new balance is " + customer.getAccount().getSavingsAccount().getBalance() + "$");
-                    break;
-            }
-        }
-    }
-
     private String IBANGenerator(){
         return "GR" + Integer.toString((int) (Math.random() * 1_000_000));
     }
+
 
 }
