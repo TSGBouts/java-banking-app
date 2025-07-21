@@ -1,18 +1,20 @@
-import java.util.Map;
 import java.util.Scanner;
-import java.util.Random;
 
 public class Bank {
 
     private final Customer customer;
+    private final SearchIbanToAccountable ibanSearcher;
+    IbanGeneratable generator;
     Scanner scanner = new Scanner(System.in);
 
-    public Bank(Customer customer) {
+    public Bank(Customer customer, IbanGeneratable generator, SearchIbanToAccountable ibanSearcher) {
         this.customer = customer;
+        this.generator = generator;
+        this.ibanSearcher = ibanSearcher;
     }
 
         public void Loop() {
-            BankService bankService = new BankService(customer);
+            BankService bankService = new BankService(customer, generator);
             SearchIbanToAccount searchIbanToAccount = new SearchIbanToAccount();
             while(true) {
                 System.out.println("1. Create a Sub-Account" + "\n" + "2. Open Sub-Account" + "\n" + "3. Exit");

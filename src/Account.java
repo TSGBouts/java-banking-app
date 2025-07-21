@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Account {
 
-    private final short accountNumber;
+    private final int accountNumber;
     private double balance = 0;
     private BankAccount bankAccount;
     private SavingsAccount savingsAccount;
@@ -14,25 +14,25 @@ public class Account {
     Scanner scanner = new Scanner(System.in);
 
     public void deposit() {
-        System.out.println("Please enter deposit");
+        System.out.print("Please enter deposit: ");
         var  amount = scanner.nextDouble();
         balance += amount;
     }
 
     public void withdraw() {
-        System.out.println("Please enter deposit");
+        System.out.print("Please enter withdrawal amount: ");
         var  amount = scanner.nextDouble();
         if (balance < amount) {
-            System.out.println("Insufficient funds");
+            System.out.println("Insufficient funds.");
         }
         else balance -= amount;
     }
 
-    public Account(short accountNumber) {
+    public Account(int accountNumber) {
         this.accountNumber = accountNumber;
     }
 
-    public short getAccountNumber() {
+    public int getAccountNumber() {
         return accountNumber;
     }
 
@@ -51,13 +51,13 @@ public class Account {
     public void setBankAccount(BankAccount bankAccount) {
         this.bankAccount = bankAccount;
         ibanMap.put(bankAccount.getClass().getSimpleName(), bankAccount.getIBAN());
-        System.out.println(getBankAccount().getIBAN());
+        System.out.println("The IBAN of this account is " + getBankAccount().getIBAN().replaceAll("(.{4})(?=.)", "$1 "));
     }
 
     public void setSavingsAccount(SavingsAccount savingsAccount) {
         this.savingsAccount = savingsAccount;
         ibanMap.put(savingsAccount.getClass().getSimpleName(), savingsAccount.getIBAN());
-        System.out.println(getSavingsAccount().getIBAN());
+        System.out.println("The IBAN of this account is " + getSavingsAccount().getIBAN().replaceAll("(.{4})(?=.)", "$1 "));
     }
 
     public Map<String,String> getIbanMap() {

@@ -2,9 +2,7 @@
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        Customer me = FirstLogin.customer();
-        Bank bank = new Bank(me);
+        var bank = new Bank(FirstLogin.customer(), new IbanGenerator(), new SearchIbanToAccount());
         bank.Loop();
-        System.out.println(me.getAccount().getBankAccount().getIBAN());
     }
 }

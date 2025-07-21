@@ -2,9 +2,9 @@ import java.util.Scanner;
 
 public class BankAccount extends Account {
 
-    private String IBAN;
+    private final String IBAN;
 
-    BankAccount(short accountNumber, String IBAN) {
+    BankAccount(int accountNumber, String IBAN) {
         super(accountNumber);
         this.IBAN = IBAN;
     }
