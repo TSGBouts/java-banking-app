@@ -17,14 +17,17 @@ public class Bank {
             BankService bankService = new BankService(customer, generator);
             SearchIbanToAccount searchIbanToAccount = new SearchIbanToAccount();
             while(true) {
-                System.out.println("1. Create a Sub-Account" + "\n" + "2. Open Sub-Account" + "\n" + "3. Exit");
+                System.out.println("""
+                        1. Create a Sub-Account
+                        2. Open Sub-Account
+                        3. Exit""");
                 Short answer = scanner.nextShort();
                 switch (answer) {
                     case 1:
                         bankService.createSubAccount(scanner);
                         break;
                     case 2:
-                        searchIbanToAccount.searchIbanToAccount(customer);
+                        searchIbanToAccount.SubAccountManager(customer);
                         break;
                     case 3:
                         System.exit(0);

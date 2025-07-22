@@ -1,3 +1,3 @@
 public interface SearchIbanToAccountable {
-    void searchIbanToAccount(Customer customer);
+    void SubAccountManager(Customer customer);
 }

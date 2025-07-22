@@ -13,10 +13,29 @@ public class Account {
 
     Scanner scanner = new Scanner(System.in);
 
+    public void transferTo(Account target, double amount) {
+        if (amount <= 0 || amount > this.balance) {
+            System.out.println("Transfer amount must be between 0 and " + (this.balance - amount));
+            return;
+        }
+        this.withdraw(amount);
+        target.deposit(amount);
+        System.out.println("Transfer successful");
+    }
+
     public void deposit() {
         System.out.print("Please enter deposit: ");
-        var  amount = scanner.nextDouble();
+        var  amount = Double.parseDouble(scanner.nextLine());
         balance += amount;
+    }
+
+    public void deposit(double amount) { balance += amount; }
+
+    public void withdraw(double amount) {
+        if (balance < amount) {
+            System.out.println("Insufficient funds.");
+        }
+        else balance -= amount;
     }
 
     public void withdraw() {
