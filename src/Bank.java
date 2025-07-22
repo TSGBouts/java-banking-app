@@ -3,14 +3,12 @@ import java.util.Scanner;
 public class Bank {
 
     private final Customer customer;
-    private final SearchIbanToAccountable ibanSearcher;
     IbanGeneratable generator;
     Scanner scanner = new Scanner(System.in);
 
     public Bank(Customer customer, IbanGeneratable generator, SearchIbanToAccountable ibanSearcher) {
         this.customer = customer;
         this.generator = generator;
-        this.ibanSearcher = ibanSearcher;
     }
 
         public void Loop() {
@@ -20,8 +18,10 @@ public class Bank {
                 System.out.println("""
                         1. Create a Sub-Account
                         2. Open Sub-Account
-                        3. Exit""");
-                Short answer = scanner.nextShort();
+                        3. Transfer
+                        4. Open Transaction History
+                        5. Exit""");
+                short answer = scanner.nextShort();
                 switch (answer) {
                     case 1:
                         bankService.createSubAccount(scanner);
@@ -30,6 +30,14 @@ public class Bank {
                         searchIbanToAccount.SubAccountManager(customer);
                         break;
                     case 3:
+                        scanner.nextLine();
+                        new Transfer(scanner).transfer(customer);
+                        break;
+                    case 4:
+                        for (TransactionHistory tx : customer.getAccount().getTransactionHistoryList())
+                            System.out.println(tx.getTimestamp() + " " + tx.getType() + " " + tx.getAmount() + "$ " + tx.getDescription());
+                    break;
+                    case 5:
                         System.exit(0);
                         break;
                         default:

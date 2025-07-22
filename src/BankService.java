@@ -15,7 +15,7 @@ public class BankService {
         String iban = ibanGen.generateGreekIban();
         switch (newAccount) {
             case 1:
-                var bankAccount = new BankAccount(customer.getAccount().getAccountNumber(), iban);
+                var bankAccount = new CheckingAccount(customer.getAccount().getAccountNumber(), iban);
                 customer.getAccount().setBankAccount(bankAccount);
                 break;
             case 2:

@@ -1,10 +1,8 @@
-import java.util.Scanner;
-
-public class BankAccount extends Account {
+public class CheckingAccount extends Account implements Accountable {
 
     private final String IBAN;
 
-    BankAccount(int accountNumber, String IBAN) {
+    CheckingAccount(int accountNumber, String IBAN) {
         super(accountNumber);
         this.IBAN = IBAN;
     }
@@ -12,5 +10,4 @@ public class BankAccount extends Account {
     public String getIBAN() {
         return IBAN;
     }
-
 }

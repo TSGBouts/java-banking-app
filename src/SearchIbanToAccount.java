@@ -1,4 +1,3 @@
-import java.util.Map;
 import java.util.Scanner;
 
 public class SearchIbanToAccount implements SearchIbanToAccountable {
@@ -28,17 +27,12 @@ public class SearchIbanToAccount implements SearchIbanToAccountable {
                             1. Check Balance
                             2. Deposit
                             3. Withdraw
-                            4. Transfer
-                            5. Exit Bank Account""");
+                            4. Exit Bank Account""");
                     answer = scanner.nextShort();
                     if (answer == 1) System.out.println("Your balance is: " + customer.getAccount().getBankAccount().getBalance() + "$");
                     else if (answer == 2) customer.getAccount().getBankAccount().deposit();
                     else if (answer == 3) customer.getAccount().getBankAccount().withdraw();
-                    else if (answer == 4) {
-                        scanner.nextLine();
-                        new Transfer(scanner).transfer(customer.getAccount().getBankAccount(), customer);
-                    }
-                    else if (answer == 5) break;
+                    else if (answer == 4) break;
                     else System.out.println("Enter a valid option");
                 }
                 while (answer != 4);
@@ -52,24 +46,17 @@ public class SearchIbanToAccount implements SearchIbanToAccountable {
                             2. Deposit
                             3. Withdraw
                             4. Check Savings
-                            5. Transfer
-                            6. Exit Savings Account""");
+                            5. Exit Savings Account""");
                     answer2 = scanner.nextShort();
                     if (answer2 == 1) System.out.println("Your balance is: " + customer.getAccount().getSavingsAccount().getBalance() + "$");
                     else if (answer2 == 2) customer.getAccount().getSavingsAccount().deposit();
                     else if (answer2 == 3) customer.getAccount().getSavingsAccount().withdraw();
                     else if (answer2 == 4) customer.getAccount().getSavingsAccount().savingsCalculator(scanner);
-                    else  if (answer2 == 5) {
-                        scanner.nextLine();
-                        new Transfer(scanner).transfer(customer.getAccount().getSavingsAccount(), customer);
-                    }
-                    else if (answer2 == 6) break;
+                    else if (answer2 == 5) break;
                     else System.out.println("Enter a valid option");
                 }
                 while (answer2 != 5);
                 break;
-            default:
-
         }
 
     }

@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class FirstLogin {
 
@@ -24,7 +25,7 @@ public class FirstLogin {
             System.out.print("Please enter a username: ");
             String username = scanner.nextLine();
             if (!username.isEmpty() && username.matches("^[A-Za-z0-9]+$") ) {
-                int accountNumber = (int) (Math.random() * 1000);
+                int accountNumber = ThreadLocalRandom.current().nextInt(1000, 10000);
                 var account = new Account(accountNumber);
                 System.out.println("Your new account code is " + account.getAccountNumber() + ".");
                 return new Customer(username, account);

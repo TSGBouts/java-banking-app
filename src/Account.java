@@ -1,27 +1,16 @@
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 
 public class Account {
 
     private final int accountNumber;
     private double balance = 0;
-    private BankAccount bankAccount;
+    private CheckingAccount checkingAccount;
     private SavingsAccount savingsAccount;
+    private final List<TransactionHistory>  transactionHistoryList =  new ArrayList<>();
 
     private final Map<String,String> ibanMap = new HashMap<>();
 
     Scanner scanner = new Scanner(System.in);
-
-    public void transferTo(Account target, double amount) {
-        if (amount <= 0 || amount > this.balance) {
-            System.out.println("Transfer amount must be between 0 and " + (this.balance - amount));
-            return;
-        }
-        this.withdraw(amount);
-        target.deposit(amount);
-        System.out.println("Transfer successful");
-    }
 
     public void deposit() {
         System.out.print("Please enter deposit: ");
@@ -29,18 +18,9 @@ public class Account {
         balance += amount;
     }
 
-    public void deposit(double amount) { balance += amount; }
-
-    public void withdraw(double amount) {
-        if (balance < amount) {
-            System.out.println("Insufficient funds.");
-        }
-        else balance -= amount;
-    }
-
     public void withdraw() {
         System.out.print("Please enter withdrawal amount: ");
-        var  amount = scanner.nextDouble();
+        var  amount = Double.parseDouble(scanner.nextLine());
         if (balance < amount) {
             System.out.println("Insufficient funds.");
         }
@@ -59,17 +39,17 @@ public class Account {
         return balance;
     }
 
-    public BankAccount getBankAccount() {
-        return bankAccount;
+    public CheckingAccount getBankAccount() {
+        return checkingAccount;
     }
 
     public SavingsAccount getSavingsAccount() {
         return savingsAccount;
     }
 
-    public void setBankAccount(BankAccount bankAccount) {
-        this.bankAccount = bankAccount;
-        ibanMap.put(bankAccount.getClass().getSimpleName(), bankAccount.getIBAN());
+    public void setBankAccount(CheckingAccount checkingAccount) {
+        this.checkingAccount = checkingAccount;
+        ibanMap.put(checkingAccount.getClass().getSimpleName(), checkingAccount.getIBAN());
         System.out.println("The IBAN of this account is " + getBankAccount().getIBAN().replaceAll("(.{4})(?=.)", "$1 "));
     }
 
@@ -81,5 +61,18 @@ public class Account {
 
     public Map<String,String> getIbanMap() {
         return ibanMap;
+    }
+
+    public List<TransactionHistory> getTransactionHistoryList() {
+        return transactionHistoryList;
+    }
+
+    public void deposit(double amount) { balance += amount; }
+
+    public void withdraw(double amount) {
+        if (balance < amount) {
+            System.out.println("Insufficient funds.");
+        }
+        else balance -= amount;
     }
 }

@@ -20,14 +20,12 @@ public class IbanFinder {
                 .orElse("Invalid");  // return "Invalid" as default
     }
 
-    public Account getAccountByIban(String ibanInput) {
-        String trimmedIban = ibanInput.replaceAll("\\s+", "");
-        String type = findAccountTypeByIban(trimmedIban);
-
-        return switch (type) {
-            case "BankAccount" -> customer.getAccount().getBankAccount();
-            case "SavingsAccount" -> customer.getAccount().getSavingsAccount();
-            default -> null;
-        };
+    public Accountable getAccountByIban(String ibanInput) {
+        ibanInput = ibanInput.replaceAll("\\s+","");
+        if (customer.getAccount().getBankAccount().getIBAN().equalsIgnoreCase(ibanInput))
+            return customer.getAccount().getBankAccount();
+        if (customer.getAccount().getSavingsAccount().getIBAN().equalsIgnoreCase(ibanInput))
+            return customer.getAccount().getSavingsAccount();
+        return null;
     }
 }

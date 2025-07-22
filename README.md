@@ -1,5 +1,5 @@
-This will be a console-based banking system written in Java.  
-It will support creating accounts, deposits, withdrawals, transfers, 
+This is a console-based banking system written in Java.  
+It supports creating accounts, deposits, withdrawals, transfers, 
 later it will include a GUI with JavaFX.
 
 ## Features (Planned)

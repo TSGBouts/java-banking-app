@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class SavingsAccount extends Account{
+public class SavingsAccount extends Account implements Accountable{
 
     final short MONTHS_IN_YEAR = 12;
     final short PERCENT = 100;
