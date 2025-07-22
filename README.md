@@ -3,9 +3,9 @@ It will support creating accounts, deposits, withdrawals, transfers,
 later it will include a GUI with JavaFX.
 
 ## Features (Planned)
-- [ ] Create account
-- [ ] Deposit and withdraw money
-- [ ] Transfer between accounts
+- [x] Create account
+- [x] Deposit and withdraw money
+- [x] Transfer between accounts
 - [ ] Transaction history
 - [ ] JavaFX GUI (Phase 2)
 
