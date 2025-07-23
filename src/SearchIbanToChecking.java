@@ -11,7 +11,8 @@ public class SearchIbanToChecking {
                             1. Check Balance
                             2. Deposit
                             3. Withdraw
-                            4. Exit Bank Account""");
+                            4. Exit Checking Account
+                            5. Close Checking Account""");
             answer = Short.parseShort(scanner.nextLine());
             if (answer == 1) System.out.println("Your balance is: " + customer.getAccount().getCheckingAccount().getBalance() + "$");
             else if (answer == 2) {
@@ -30,6 +31,15 @@ public class SearchIbanToChecking {
                 System.out.println("Withdrawal successful. Your new balance is: " + customer.getAccount().getCheckingAccount().getBalance() + "$");
             }
             else if (answer == 4) break;
+            else if (answer == 5) {
+                if (customer.getAccount().getCheckingAccount().getBalance() != 0)
+                    System.out.println("Account balance has to be 0 in order to close. Please withdraw: " + customer.getAccount().getCheckingAccount().getBalance() + "$");
+                else {
+                    customer.getAccount().closeCheckingAccount(customer.getAccount());
+                    System.out.println("Deleting account...");
+                    break;
+                }
+            }
             else System.out.println("Enter a valid option");
         }
         while (answer != 4);

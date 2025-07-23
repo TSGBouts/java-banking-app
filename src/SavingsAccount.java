@@ -12,10 +12,6 @@ public class SavingsAccount extends Account implements Accountable{
         this.IBAN = IBAN;
     }
 
-    public SavingsAccount(){
-        super(0);
-    }
-
     public String getIBAN() {
         return IBAN;
     }

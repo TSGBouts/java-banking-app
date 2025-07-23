@@ -1,3 +1,4 @@
+import java.sql.SQLOutput;
 import java.util.Scanner;
 
 public class SearchIbanToSavings {
@@ -11,7 +12,8 @@ public class SearchIbanToSavings {
                             2. Deposit
                             3. Withdraw
                             4. Check Savings
-                            5. Exit Savings Account""");
+                            5. Exit Savings Account
+                            6. Close Savings Account""");
             answer = Short.parseShort(scanner.nextLine());
             if (answer == 1) System.out.println("Your balance is: " + customer.getAccount().getSavingsAccount().getBalance() + "$");
             else if (answer == 2) {
@@ -31,6 +33,15 @@ public class SearchIbanToSavings {
             }
             else if (answer == 4) new SavingsAccountUI().savingsCalculatorUI(customer);
             else if (answer == 5) break;
+            else if  (answer == 6) {
+                if (customer.getAccount().getSavingsAccount().getBalance() != 0)
+                    System.out.println("Account balance has to be 0 in order to close. Please withdraw: " + customer.getAccount().getSavingsAccount().getBalance() + "$");
+                else {
+                    customer.getAccount().closeSavingsAccount(customer.getAccount());
+                    System.out.println("Deleting account...");
+                    break;
+                }
+            }
             else System.out.println("Enter a valid option");
         }
         while (answer != 5);

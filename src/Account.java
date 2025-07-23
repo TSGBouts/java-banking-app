@@ -53,4 +53,12 @@ public class Account {
     public void withdraw(double amount) {
         balance -= amount;
     }
+
+    public void closeSavingsAccount(Account wrapper) {
+        wrapper.getIbanMap().remove("SavingsAccount", wrapper.getSavingsAccount().getIBAN());
+    }
+
+    public void closeCheckingAccount(Account wrapper) {
+        wrapper.getIbanMap().remove("CheckingAccount", wrapper.getCheckingAccount().getIBAN());
+    }
 }
