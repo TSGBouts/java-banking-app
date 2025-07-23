@@ -47,16 +47,14 @@ public class Account {
         return savingsAccount;
     }
 
-    public void setBankAccount(CheckingAccount checkingAccount) {
+    public void setCheckingAccount(CheckingAccount checkingAccount) {
         this.checkingAccount = checkingAccount;
         ibanMap.put(checkingAccount.getClass().getSimpleName(), checkingAccount.getIBAN());
-        System.out.println("The IBAN of this account is " + getCheckingAccount().getIBAN().replaceAll("(.{4})(?=.)", "$1 "));
     }
 
     public void setSavingsAccount(SavingsAccount savingsAccount) {
         this.savingsAccount = savingsAccount;
         ibanMap.put(savingsAccount.getClass().getSimpleName(), savingsAccount.getIBAN());
-        System.out.println("The IBAN of this account is " + getSavingsAccount().getIBAN().replaceAll("(.{4})(?=.)", "$1 "));
     }
 
     public Map<String,String> getIbanMap() {
@@ -69,10 +67,5 @@ public class Account {
 
     public void deposit(double amount) { balance += amount; }
 
-    public void withdraw(double amount) {
-        if (balance < amount) {
-            System.out.println("Insufficient funds.");
-        }
-        else balance -= amount;
-    }
+    public void withdraw(double amount) { balance -= amount; }
 }

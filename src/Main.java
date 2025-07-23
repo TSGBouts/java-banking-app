@@ -2,7 +2,6 @@
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        var bank = new Bank(new ConsoleLoginUI().promptFirstLogin(), new IbanGenerator(), new SearchIbanToAccount());
-        bank.Loop();
+        new BankConsoleUI().createAccountController(new ConsoleLoginUI().promptFirstLogin(), new IbanGenerator(), new SearchIbanToAccount());
     }
 }

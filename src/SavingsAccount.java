@@ -5,7 +5,7 @@ public class SavingsAccount extends Account implements Accountable{
 
     final short MONTHS_IN_YEAR = 12;
     final short PERCENT = 100;
-    private String IBAN = null;
+    private String IBAN;
 
     public SavingsAccount(int accountNumber, String IBAN) {
         super(accountNumber);

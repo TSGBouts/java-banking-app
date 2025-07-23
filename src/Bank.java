@@ -5,6 +5,7 @@ public class Bank {
     private final Customer customer;
     IbanGeneratable generator;
     Scanner scanner = new Scanner(System.in);
+    BankConsoleUI bankConsoleUI = new BankConsoleUI();
 
     public Bank(Customer customer, IbanGeneratable generator, SearchIbanToAccountable ibanSearcher) {
         this.customer = customer;
@@ -12,13 +13,6 @@ public class Bank {
     }
 
         public void Loop() {
-            while(true) {
-                System.out.println("""
-                        1. Create a Sub-Account
-                        2. Open Sub-Account
-                        3. Transfer
-                        4. Open Transaction History
-                        5. Exit""");
                 short answer = Short.parseShort(scanner.nextLine());
                 switch (answer) {
                     case 1:
@@ -32,14 +26,14 @@ public class Bank {
                         break;
                     case 4:
                         for (TransactionHistory tx : customer.getAccount().getTransactionHistoryList())
-                            System.out.println(tx.getTimestamp() + " " + tx.getType() + " " + tx.getAmount() + "$ " + tx.getDescription());
+                            System.out.println(tx.timestamp() + " " + tx.type() + " " + tx.amount() + "$ " + tx.description());
                     break;
                     case 5:
+                        bankConsoleUI.exiting();
                         System.exit(0);
                         break;
                         default:
-                            System.out.println("Please enter a valid option");
+                            bankConsoleUI.invalid();
                 }
                 }
         }
-    }

@@ -10,17 +10,18 @@ public class BankService {
     }
 
     public void createSubAccount(Scanner scanner) {
-        System.out.println("1. Bank Account" + "\n" + "2. Savings Account");
+        var accountUI = new BankConsoleUI();
+        accountUI.subAccountList();
         short newAccount = Short.parseShort(scanner.nextLine());
         String iban = ibanGen.generateGreekIban();
         switch (newAccount) {
             case 1:
-                var bankAccount = new CheckingAccount(customer.getAccount().getAccountNumber(), iban);
-                customer.getAccount().setBankAccount(bankAccount);
+                var checkingAccount = new CheckingAccount(customer.getAccount().getAccountNumber(), iban);
+                accountUI.setCheckingAccountController(customer, checkingAccount);
                 break;
             case 2:
                 var savingsAccount = new SavingsAccount(customer.getAccount().getAccountNumber(), iban);
-                customer.getAccount().setSavingsAccount(savingsAccount);
+                accountUI.setSavingsAccountController(customer, savingsAccount);
                 break;
         }
     }
