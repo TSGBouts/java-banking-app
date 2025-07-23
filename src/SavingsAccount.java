@@ -21,8 +21,7 @@ public class SavingsAccount extends Account implements Accountable{
     }
     public double savingsCalculator(float interrestRate, float period){
         float intRate = interrestRate / PERCENT;
-        float per = period + MONTHS_IN_YEAR;
-        System.out.println(getBalance());
+        float per = period * MONTHS_IN_YEAR;
         return getBalance() * Math.pow((1 + intRate / MONTHS_IN_YEAR), MONTHS_IN_YEAR * per);
     }
 }

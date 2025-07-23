@@ -10,23 +10,6 @@ public class Account {
 
     private final Map<String,String> ibanMap = new HashMap<>();
 
-    Scanner scanner = new Scanner(System.in);
-
-    public void deposit() {
-        System.out.print("Please enter deposit: ");
-        var  amount = Double.parseDouble(scanner.nextLine());
-        balance += amount;
-    }
-
-    public void withdraw() {
-        System.out.print("Please enter withdrawal amount: ");
-        var  amount = Double.parseDouble(scanner.nextLine());
-        if (balance < amount) {
-            System.out.println("Insufficient funds.");
-        }
-        else balance -= amount;
-    }
-
     public Account(int accountNumber) {
         this.accountNumber = accountNumber;
     }
@@ -67,5 +50,7 @@ public class Account {
 
     public void deposit(double amount) { balance += amount; }
 
-    public void withdraw(double amount) { balance -= amount; }
+    public void withdraw(double amount) {
+        balance -= amount;
+    }
 }

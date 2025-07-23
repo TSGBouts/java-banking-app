@@ -1,3 +1,3 @@
 public interface SearchIbanToAccountable {
-    void SubAccountManager(Customer customer);
+    void SubAccountManager(Customer customer) throws PositiveValueException;
 }

@@ -22,10 +22,11 @@ public class IbanFinder {
 
     public Accountable getAccountByIban(String ibanInput) {
         ibanInput = ibanInput.replaceAll("\\s+","");
-        if (customer.getAccount().getCheckingAccount().getIBAN().equalsIgnoreCase(ibanInput))
-            return customer.getAccount().getCheckingAccount();
-        if (customer.getAccount().getSavingsAccount().getIBAN().equalsIgnoreCase(ibanInput))
-            return customer.getAccount().getSavingsAccount();
-        return null;
+
+            if (customer.getAccount().getCheckingAccount().getIBAN().equalsIgnoreCase(ibanInput))
+                return customer.getAccount().getCheckingAccount();
+            if (customer.getAccount().getSavingsAccount().getIBAN().equalsIgnoreCase(ibanInput))
+                return customer.getAccount().getSavingsAccount();
+             return null;
     }
 }

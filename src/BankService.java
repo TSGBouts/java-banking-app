@@ -9,20 +9,19 @@ public class BankService {
         this.ibanGen = ibanGenerator;
     }
 
-    public void createSubAccount(Scanner scanner) {
-        var accountUI = new BankConsoleUI();
-        accountUI.subAccountList();
-        short newAccount = Short.parseShort(scanner.nextLine());
+    public Accountable createSubAccount(short newAccount) {
         String iban = ibanGen.generateGreekIban();
         switch (newAccount) {
             case 1:
-                var checkingAccount = new CheckingAccount(customer.getAccount().getAccountNumber(), iban);
-                accountUI.setCheckingAccountController(customer, checkingAccount);
-                break;
+                CheckingAccount checking = new CheckingAccount(customer.getAccount().getAccountNumber(), iban);
+                customer.getAccount().setCheckingAccount(checking);
+                return checking;
             case 2:
-                var savingsAccount = new SavingsAccount(customer.getAccount().getAccountNumber(), iban);
-                accountUI.setSavingsAccountController(customer, savingsAccount);
-                break;
+                SavingsAccount saving = new SavingsAccount(customer.getAccount().getAccountNumber(), iban);
+                customer.getAccount().setSavingsAccount(saving);
+                return saving;
+            default:
+                throw new IllegalArgumentException("Invalid account type");
         }
     }
 }
