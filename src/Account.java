@@ -39,7 +39,7 @@ public class Account {
         return balance;
     }
 
-    public CheckingAccount getBankAccount() {
+    public CheckingAccount getCheckingAccount() {
         return checkingAccount;
     }
 
@@ -50,7 +50,7 @@ public class Account {
     public void setBankAccount(CheckingAccount checkingAccount) {
         this.checkingAccount = checkingAccount;
         ibanMap.put(checkingAccount.getClass().getSimpleName(), checkingAccount.getIBAN());
-        System.out.println("The IBAN of this account is " + getBankAccount().getIBAN().replaceAll("(.{4})(?=.)", "$1 "));
+        System.out.println("The IBAN of this account is " + getCheckingAccount().getIBAN().replaceAll("(.{4})(?=.)", "$1 "));
     }
 
     public void setSavingsAccount(SavingsAccount savingsAccount) {

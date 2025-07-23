@@ -12,8 +12,6 @@ public class Bank {
     }
 
         public void Loop() {
-            BankService bankService = new BankService(customer, generator);
-            SearchIbanToAccount searchIbanToAccount = new SearchIbanToAccount();
             while(true) {
                 System.out.println("""
                         1. Create a Sub-Account
@@ -21,16 +19,15 @@ public class Bank {
                         3. Transfer
                         4. Open Transaction History
                         5. Exit""");
-                short answer = scanner.nextShort();
+                short answer = Short.parseShort(scanner.nextLine());
                 switch (answer) {
                     case 1:
-                        bankService.createSubAccount(scanner);
+                        new BankService(customer, generator).createSubAccount(scanner);
                         break;
                     case 2:
-                        searchIbanToAccount.SubAccountManager(customer);
+                        new SearchIbanToAccount().SubAccountManager(customer);
                         break;
                     case 3:
-                        scanner.nextLine();
                         new Transfer(scanner).transfer(customer);
                         break;
                     case 4:

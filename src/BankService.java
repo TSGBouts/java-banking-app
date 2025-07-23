@@ -11,7 +11,7 @@ public class BankService {
 
     public void createSubAccount(Scanner scanner) {
         System.out.println("1. Bank Account" + "\n" + "2. Savings Account");
-        short newAccount = scanner.nextShort();
+        short newAccount = Short.parseShort(scanner.nextLine());
         String iban = ibanGen.generateGreekIban();
         switch (newAccount) {
             case 1:
