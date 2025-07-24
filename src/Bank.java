@@ -4,6 +4,7 @@ public class Bank {
     IbanGeneratable generator;
     BankConsoleUI bankConsoleUI = new BankConsoleUI();
     TransferUI transferUI = new TransferUI();
+    ConsoleLoginUI consoleLoginUI = new ConsoleLoginUI();
 
     public Bank(Customer customer, IbanGeneratable generator, SearchIbanToAccountable ibanSearcher) {
         this.customer = customer;
@@ -29,8 +30,7 @@ public class Bank {
                         bankConsoleUI.printHistory(customer, customer.getAccount().getTransactionHistoryList());
                         break;
                     case 5:
-                        bankConsoleUI.exiting();
-                        System.exit(0);
+                        consoleLoginUI.promptFirstLogin();
                         break;
                         default:
                             bankConsoleUI.invalid();

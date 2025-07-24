@@ -25,30 +25,12 @@ public class BankConsoleUI {
         }
     }
 
-    public void setSavingsAccountController(Customer customer, SavingsAccount savingsAccount) {
-        customer.getAccount().setSavingsAccount(savingsAccount);
-        System.out.println("The IBAN of this account is " + customer.getAccount().getSavingsAccount().getIBAN().replaceAll("(.{4})(?=.)", "$1 "));
-    }
-
-    public void setCheckingAccountController(Customer customer, CheckingAccount checkingAccount) {
-        customer.getAccount().setCheckingAccount(checkingAccount);
-        System.out.println("The IBAN of this account is " + customer.getAccount().getCheckingAccount().getIBAN().replaceAll("(.{4})(?=.)", "$1 "));
-    }
     public void invalid(){
         System.out.println("Please enter a valid option");
     }
 
-    public void exiting(){
-        System.out.println("Exiting...");
-    }
-
-    public short subAccountList(){
-        System.out.println("1. Bank Account" + "\n" + "2. Savings Account");
-        return Short.parseShort(scanner.nextLine());
-    }
-
     public void printHistory(Customer customer, List<TransactionHistory> transactionHistoryList) {
-        if (transactionHistoryList.isEmpty()) System.out.println("There are no transaction history.");
+        if (transactionHistoryList.isEmpty()) System.out.println("There is no transaction history.");
         else for (TransactionHistory tx : customer.getAccount().getTransactionHistoryList())
             System.out.println(tx.timestamp() + " " + tx.type() + " " + tx.amount() + "$ " + tx.description());
     }
