@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class SearchIbanToChecking {
+public class SearchIbanToCheckingUI {
 
     public static void searchIbanToChecking(Customer customer) throws PositiveValueException {
         double amount;

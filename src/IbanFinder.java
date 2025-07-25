@@ -13,9 +13,10 @@ public class IbanFinder {
 
         Map<String, String> ibanMap = customer.getAccount().getIbanMap();
 
+
         return ibanMap.entrySet().stream()
                 .filter(e -> e.getValue().equalsIgnoreCase(trimmedIban))
-                .map(Map.Entry::getKey)
+                .map(e -> e.getKey().replaceAll("\\d+$", ""))  // strip trailing digits
                 .findFirst()
                 .orElse("Invalid");  // return "Invalid" as default
     }
@@ -23,10 +24,14 @@ public class IbanFinder {
     public Accountable getAccountByIban(String ibanInput) {
         ibanInput = ibanInput.replaceAll("\\s+","");
 
-            if (customer.getAccount().getCheckingAccount().getIBAN().equalsIgnoreCase(ibanInput))
+        for (CheckingAccount checkingAccount : customer.getAccount().getCheckingAccountList()) {
+            if (checkingAccount.getIBAN().equalsIgnoreCase(ibanInput))
                 return customer.getAccount().getCheckingAccount();
-            if (customer.getAccount().getSavingsAccount().getIBAN().equalsIgnoreCase(ibanInput))
+        }
+        for (SavingsAccount savingsAccount : customer.getAccount().getSavingsAccountList()) {
+            if (savingsAccount.getIBAN().equalsIgnoreCase(ibanInput))
                 return customer.getAccount().getSavingsAccount();
+        }
              return null;
     }
 }

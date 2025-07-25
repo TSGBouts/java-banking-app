@@ -15,10 +15,12 @@ public class BankService {
             case 1:
                 CheckingAccount checking = new CheckingAccount(customer.getAccount().getAccountNumber(), iban);
                 customer.getAccount().setCheckingAccount(checking);
+                customer.getAccount().getCheckingAccountList().add(checking);
                 return checking;
             case 2:
                 SavingsAccount saving = new SavingsAccount(customer.getAccount().getAccountNumber(), iban);
                 customer.getAccount().setSavingsAccount(saving);
+                customer.getAccount().getSavingsAccountList().add(saving);
                 return saving;
             default:
                 throw new IllegalArgumentException("Invalid account type");

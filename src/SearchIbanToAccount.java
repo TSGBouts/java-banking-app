@@ -21,11 +21,11 @@ public class SearchIbanToAccount implements SearchIbanToAccountable {
 
         switch (type) {
             case "CheckingAccount":
-                SearchIbanToChecking.searchIbanToChecking(customer);
+                SearchIbanToCheckingUI.searchIbanToChecking(customer);
                 break;
 
             case "SavingsAccount":
-                SearchIbanToSavings.searchIbanToSavings(customer);
+                SearchIbanToSavingsUI.searchIbanToSavings(customer);
                 break;
         }
     }

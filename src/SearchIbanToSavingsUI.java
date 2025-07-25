@@ -1,7 +1,6 @@
-import java.sql.SQLOutput;
 import java.util.Scanner;
 
-public class SearchIbanToSavings {
+public class SearchIbanToSavingsUI {
     public static void searchIbanToSavings(Customer customer) throws PositiveValueException {
         double amount;
         short answer;
