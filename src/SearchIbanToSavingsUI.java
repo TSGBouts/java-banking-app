@@ -1,3 +1,6 @@
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 import java.util.Scanner;
 
 public class SearchIbanToSavingsUI {
@@ -19,6 +22,13 @@ public class SearchIbanToSavingsUI {
                 System.out.println("Enter deposit amount: ");
                 amount = Double.parseDouble(scanner.nextLine());
                 customer.getAccount().getSavingsAccount().deposit(amount);
+                customer.getAccount().getTransactionHistoryList().add(
+                        new TransactionHistory(
+                                LocalDateTime.now().truncatedTo(ChronoUnit.MINUTES).format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")),
+                                "- DEPOSIT - ",
+                                amount,
+                                "- TO " + customer.getAccount().getSavingsAccount().getIBAN().replaceAll("(.{4})(?=.)", "$1 ") + " - TO ")
+                );
                 System.out.println("Deposit successful. Your new balance is: " + customer.getAccount().getSavingsAccount().getBalance() + "$");
             }
             else if (answer == 3) {
@@ -28,6 +38,12 @@ public class SearchIbanToSavingsUI {
                     throw new PositiveValueException("Withdraw amount must me between 0 and " + customer.getAccount().getSavingsAccount().getBalance() + "$");
 
                 else customer.getAccount().getSavingsAccount().withdraw(amount);
+                customer.getAccount().getTransactionHistoryList().add(
+                        new TransactionHistory(
+                                LocalDateTime.now().truncatedTo(ChronoUnit.MINUTES).format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")),
+                                "- WITHDRAW - ",
+                                amount,
+                                "- FROM " + customer.getAccount().getSavingsAccount().getIBAN().replaceAll("(.{4})(?=.)", "$1 ")));
                 System.out.println("Withdrawal successful. Your new balance is: " + customer.getAccount().getSavingsAccount().getBalance() + "$");
             }
             else if (answer == 4) new SavingsAccountUI().savingsCalculatorUI(customer);

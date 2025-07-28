@@ -1,3 +1,6 @@
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 import java.util.Scanner;
 
 public class SearchIbanToCheckingUI {
@@ -19,6 +22,13 @@ public class SearchIbanToCheckingUI {
                 System.out.println("Enter deposit amount: ");
                 amount = Double.parseDouble(scanner.nextLine());
                 customer.getAccount().getCheckingAccount().deposit(amount);
+                customer.getAccount().getTransactionHistoryList().add(
+                        new TransactionHistory(
+                        LocalDateTime.now().truncatedTo(ChronoUnit.MINUTES).format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")),
+                        "- DEPOSIT - ",
+                        amount,
+                        "- TO " + customer.getAccount().getCheckingAccount().getIBAN().replaceAll("(.{4})(?=.)", "$1 ") + " - TO ")
+                );
                 System.out.println("Deposit successful. Your new balance is: " + customer.getAccount().getCheckingAccount().getBalance() + "$");
             }
             else if (answer == 3) {
@@ -28,6 +38,12 @@ public class SearchIbanToCheckingUI {
                     throw new PositiveValueException("Withdraw amount must me between 0 and " + customer.getAccount().getCheckingAccount().getBalance() + "$");
 
                 else customer.getAccount().getCheckingAccount().withdraw(amount);
+                customer.getAccount().getTransactionHistoryList().add(
+                        new TransactionHistory(
+                                LocalDateTime.now().truncatedTo(ChronoUnit.MINUTES).format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")),
+                                "- WITHDRAW - ",
+                                amount,
+                                "- FROM " + customer.getAccount().getCheckingAccount().getIBAN().replaceAll("(.{4})(?=.)", "$1 ")));
                 System.out.println("Withdrawal successful. Your new balance is: " + customer.getAccount().getCheckingAccount().getBalance() + "$");
             }
             else if (answer == 4) break;
