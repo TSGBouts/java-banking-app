@@ -1,3 +1,5 @@
+package bankapp;
+
 public class Customer {
     private String username;
     private final Account account;

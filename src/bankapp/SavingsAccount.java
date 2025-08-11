@@ -1,7 +1,6 @@
-import java.sql.SQLOutput;
-import java.util.Scanner;
+package bankapp;
 
-public class SavingsAccount extends Account implements Accountable{
+public class SavingsAccount extends Account implements Accountable {
 
     final short MONTHS_IN_YEAR = 12;
     final short PERCENT = 100;

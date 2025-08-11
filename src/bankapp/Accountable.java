@@ -1,3 +1,5 @@
+package bankapp;
+
 public interface Accountable {
     double   getBalance();
     void     deposit(double amt);

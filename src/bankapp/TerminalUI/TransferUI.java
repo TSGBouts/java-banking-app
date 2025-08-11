@@ -1,4 +1,8 @@
+package bankapp.terminalUI;
+
 import java.util.Scanner;
+
+import bankapp.*;
 
 public class TransferUI {
     public void performTransferPrompt(Customer customer) {

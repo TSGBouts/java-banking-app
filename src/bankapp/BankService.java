@@ -1,4 +1,4 @@
-import java.util.Scanner;
+package bankapp;
 
 public class BankService {
     private final Customer customer;

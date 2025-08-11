@@ -1,6 +1,10 @@
+package bankapp.terminalUI;
+
 import java.util.Scanner;
 
-public class SearchIbanToAccount implements SearchIbanToAccountable {
+import bankapp.*;
+
+public class SearchIbanToAccountUI implements SearchIbanToAccountable {
     Scanner scanner = new Scanner(System.in);
 
     @Override

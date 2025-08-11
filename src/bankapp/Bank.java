@@ -1,3 +1,7 @@
+package bankapp;
+
+import bankapp.terminalUI.*;
+
 public class Bank {
 
     private final Customer customer;
@@ -18,7 +22,7 @@ public class Bank {
                         break;
                     case 2:
                         try {
-                            new SearchIbanToAccount().SubAccountManager(customer);
+                            new SearchIbanToAccountUI().SubAccountManager(customer);
                         } catch (PositiveValueException e) {
                             System.out.println(e.getMessage());
                         }

@@ -1,4 +1,8 @@
+package bankapp.terminalUI;
+
 import java.util.Scanner;
+
+import bankapp.*;
 
 public class ConsoleLoginUI {
     private final Scanner scanner = new Scanner(System.in);

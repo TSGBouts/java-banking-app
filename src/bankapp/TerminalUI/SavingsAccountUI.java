@@ -1,5 +1,8 @@
-import java.time.Period;
+package bankapp.terminalUI;
+
 import java.util.Scanner;
+
+import bankapp.*;
 
 public class SavingsAccountUI {
 
