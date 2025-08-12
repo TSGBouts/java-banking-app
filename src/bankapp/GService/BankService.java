@@ -1,4 +1,4 @@
-package bankapp;
+package bankapp.GService;
 
 public class BankService {
     private final Customer customer;

@@ -1,4 +1,4 @@
-package bankapp;
+package bankapp.terminalService;
 
 public class CheckingAccount extends Account implements Accountable {
 

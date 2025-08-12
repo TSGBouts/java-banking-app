@@ -5,7 +5,7 @@ import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.util.Scanner;
 
-import bankapp.*;
+import bankapp.terminalService.*;
 
 public class SearchIbanToSavingsUI {
     public static void searchIbanToSavings(Customer customer) throws PositiveValueException {

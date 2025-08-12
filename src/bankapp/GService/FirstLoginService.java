@@ -1,4 +1,4 @@
-package bankapp;
+package bankapp.GService;
 
 import java.util.ArrayList;
 import java.util.List;

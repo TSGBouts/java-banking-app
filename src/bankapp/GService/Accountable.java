@@ -1,4 +1,4 @@
-package bankapp;
+package bankapp.GService;
 
 public interface Accountable {
     double   getBalance();

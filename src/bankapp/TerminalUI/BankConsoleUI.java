@@ -3,7 +3,7 @@ package bankapp.terminalUI;
 import java.util.List;
 import java.util.Scanner;
 
-import bankapp.*;
+import bankapp.terminalService.*;
 
 public class BankConsoleUI {
 

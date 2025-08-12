@@ -1,4 +1,4 @@
-package bankapp;
+package bankapp.terminalService;
 
 import bankapp.terminalUI.*;
 

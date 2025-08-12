@@ -2,7 +2,7 @@ package bankapp.terminalUI;
 
 import java.util.Scanner;
 
-import bankapp.*;
+import bankapp.terminalService.*;
 
 public class SearchIbanToAccountUI implements SearchIbanToAccountable {
     Scanner scanner = new Scanner(System.in);
